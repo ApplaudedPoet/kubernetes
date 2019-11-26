@@ -785,6 +785,7 @@ func (nc *Controller) monitorNodeHealth() error {
 
 	for i := range added {
 		klog.V(1).Infof("Controller observed a new Node: %#v", added[i].Name)
+		klog.V(1).Infof("MsK8s : Controller observed attestation state for new Node: %#v", added[i].Status.NodeAttestationStateHealthy)
 		nodeutil.RecordNodeEvent(nc.recorder, added[i].Name, string(added[i].UID), v1.EventTypeNormal, "RegisteredNode", fmt.Sprintf("Registered Node %v in Controller", added[i].Name))
 		nc.knownNodeSet[added[i].Name] = added[i]
 		nc.addPodEvictorForNewZone(added[i])

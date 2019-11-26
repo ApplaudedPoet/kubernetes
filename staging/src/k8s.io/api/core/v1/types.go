@@ -4440,6 +4440,10 @@ type NodeStatus struct {
 	// Status of the config assigned to the node via the dynamic Kubelet config feature.
 	// +optional
 	Config *NodeConfigStatus `json:"config,omitempty" protobuf:"bytes,11,opt,name=config"`
+    // Represents the attestation state of the node.
+	// +k8s:conversion-gen=false
+	// +optional
+	NodeAttestationStateHealthy bool `json:"nodeAttestationStateHealthy,omitempty" protobuf:"varint,4,opt,name=nodeAttestationStateHealthy"`
 }
 
 type UniqueVolumeName string

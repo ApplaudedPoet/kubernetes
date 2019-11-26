@@ -366,6 +366,9 @@ func (kl *Kubelet) initialNode(ctx context.Context) (*v1.Node, error) {
 		}
 	}
 
+	klog.Infof("MSK8S: Setting node attestation state")
+    node.Status.NodeAttestationStateHealthy = false
+
 	kl.setNodeStatus(node)
 
 	return node, nil
